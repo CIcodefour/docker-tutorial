@@ -5,10 +5,10 @@ services:
     links:
       - db
     ports:
-      - "5000:5000"
+      - "5001:5000"
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.5.4
     ports:
       - "32000:3306"
     environment:

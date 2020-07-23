@@ -1,6 +1,6 @@
 from typing import List, Dict
 from flask import Flask
-import mysql.connector
+import mariadb
 import json
 
 app = Flask(__name__)
@@ -11,10 +11,10 @@ def favorite_colors() -> List[Dict]:
         'user': 'root',
         'password': 'root',
         'host': 'db',
-        'port': '3306',
+        'port': 3306,
         'database': 'knights'
     }
-    connection = mysql.connector.connect(**config)
+    connection = mariadb.connect(**config)
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM favorite_colors')
     results = [{name: color} for (name, color) in cursor]
